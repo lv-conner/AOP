@@ -13,22 +13,27 @@ namespace ConsoleApp9
     {
         static void Main(string[] args)
         {
-            Builder();
-            try
-            {
-                Console.WriteLine("hello");
-                var a = 1;
-                var b = 2;
-                var c = 3;
-                Console.WriteLine(a + b + c);
-                throw new NullReferenceException();
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine("error");
-            }
+            var service = ProxyGenerator.Generate<ICallService, CallService>();
+            service.Call();
+            service.CallName("tim lv");
 
-            Console.ReadLine();
+            Console.ReadKey();
+            //Builder();
+            //try
+            //{
+            //    Console.WriteLine("hello");
+            //    var a = 1;
+            //    var b = 2;
+            //    var c = 3;
+            //    Console.WriteLine(a + b + c);
+            //    throw new NullReferenceException();
+            //}
+            //catch(Exception e)
+            //{
+            //    Console.WriteLine("error");
+            //}
+
+            //Console.ReadLine();
 
         }
 
