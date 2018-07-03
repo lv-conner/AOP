@@ -13,6 +13,8 @@ namespace ConsoleApp9
     {
         static void Main(string[] args)
         {
+            ConstructProxy.GenerateProxy();
+            ConstructProxy.man(args);
             var service = ProxyGenerator.Generate<ICallService, CallService>();
             service.Call();
             //service.CallName("tim lv");
