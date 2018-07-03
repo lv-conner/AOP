@@ -15,7 +15,8 @@ namespace ConsoleApp9
         {
             var service = ProxyGenerator.Generate<ICallService, CallService>();
             service.Call();
-            service.CallName("tim lv");
+            //service.CallName("tim lv");
+            Console.WriteLine(service.GetName());
 
             Console.ReadKey();
             //Builder();
