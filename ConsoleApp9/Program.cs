@@ -13,6 +13,8 @@ namespace ConsoleApp9
     {
         static void Main(string[] args)
         {
+            var train = new PollyTraining();
+            train.TestCase1();
             ConstructProxy.GenerateProxy();
             ConstructProxy.man(args);
             var service = ProxyGenerator.Generate<ICallService, CallService>();
