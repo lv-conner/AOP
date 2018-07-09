@@ -1,0 +1,52 @@
+﻿{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "localhost",
+          "port": 50001
+        }
+      ],
+      "UpstreamPathTemplate": "/Customer/{url}",
+      "UpstreamHttpMethod": [ "get", "post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "localhost",
+          "port": 50000
+        }
+      ],
+      "UpstreamPathTemplate": "/Products/{url}",
+      "UpstreamHttpMethod": [ "get", "post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{url}",
+      "DownstreamScheme": "http",
+      //"DownstreamHostAndPorts": [
+      //  {
+      //    "host": "localhost",
+      //    "port": 5000
+      //  }
+      //],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "ReRoutesCaseSensitive": false,
+      "ServiceName": "NoteService",
+      "UseServiceDiscovery": true,
+      "UpstreamPathTemplate": "/Note/{url}",
+      "UpstreamHttpMethod": [ "get", "post" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "host": "localhost",
+      "port": 8500
+    }
+  }
+}
