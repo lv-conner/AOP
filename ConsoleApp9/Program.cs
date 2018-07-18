@@ -13,14 +13,15 @@ namespace ConsoleApp9
     {
         static void Main(string[] args)
         {
-            var train = new PollyTraining();
-            train.TestCase1();
-            ConstructProxy.GenerateProxy();
-            ConstructProxy.man(args);
-            var service = ProxyGenerator.Generate<ICallService, CallService>();
-            service.Call();
-            //service.CallName("tim lv");
-            Console.WriteLine(service.GetName());
+            AggregateSimple.Case();
+            //var train = new PollyTraining();
+            //train.TestCase1();
+            //ConstructProxy.GenerateProxy();
+            //ConstructProxy.man(args);
+            //var service = ProxyGenerator.Generate<ICallService, CallService>();
+            //service.Call();
+            ////service.CallName("tim lv");
+            //Console.WriteLine(service.GetName());
 
             Console.ReadKey();
             //Builder();
@@ -40,6 +41,22 @@ namespace ConsoleApp9
 
             //Console.ReadLine();
 
+        }
+
+
+        static void MultiThread()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Task.Run(() =>
+                {
+                    Console.WriteLine("task start");
+                    if (i > 5)
+                    {
+                        throw new ArgumentNullException();
+                    }
+                });
+            }
         }
 
         static void Builder()

@@ -98,6 +98,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AggregateSimple.cs" />
     <Compile Include="ConstructProxy.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="PollyTraining.cs" />
