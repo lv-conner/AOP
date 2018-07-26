@@ -18,6 +18,27 @@
       "UpstreamHttpMethod": [ "get", "post" ]
     },
     {
+      //服务Url映射
+      "DownstreamPathTemplate": "/{url}",
+      //服务http请求模式
+      "DownstreamScheme": "http",
+      //服务主机和端口
+      "DownstreamHostAndPorts": [
+        {
+          "host": "localhost",
+          "port": 5001
+        }
+      ],
+      //请求Url
+      "UpstreamPathTemplate": "/API/{url}",
+      //允许的Http请求方法
+      "UpstreamHttpMethod": [ "get", "post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
       "DownstreamPathTemplate": "/api/{url}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

@@ -30,7 +30,13 @@ namespace APIGateway
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            
+            services.AddAuthentication()
+                .AddIdentityServerAuthentication("Bearer",options =>
+                {
+                    options.Authority = "http://localhost:5000";
+                    options.RequireHttpsMetadata = false;
+                    options.ApiName = "api1";
+                });
             services.AddOcelot();
         }
 
