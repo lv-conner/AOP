@@ -1,15 +1,20 @@
 ﻿{
   "ReRoutes": [
     {
+      //服务Url映射
       "DownstreamPathTemplate": "/api/{url}",
+      //服务http请求模式
       "DownstreamScheme": "http",
+      //服务主机和端口
       "DownstreamHostAndPorts": [
         {
           "host": "localhost",
           "port": 50001
         }
       ],
+      //请求Url
       "UpstreamPathTemplate": "/Customer/{url}",
+      //允许的Http请求方法
       "UpstreamHttpMethod": [ "get", "post" ]
     },
     {
@@ -24,15 +29,10 @@
       "UpstreamPathTemplate": "/Products/{url}",
       "UpstreamHttpMethod": [ "get", "post" ]
     },
+
     {
       "DownstreamPathTemplate": "/api/{url}",
       "DownstreamScheme": "http",
-      //"DownstreamHostAndPorts": [
-      //  {
-      //    "host": "localhost",
-      //    "port": 5000
-      //  }
-      //],
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
       },
