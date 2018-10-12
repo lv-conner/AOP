@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AspectCore;
 using AspectCore.DynamicProxy;
 using AspectCore.Injector;
+using AspectCore.Configuration;
 
 namespace AopConsoleApp
 {
@@ -14,6 +15,11 @@ namespace AopConsoleApp
                 .ConfigureService(services =>
                 {
                     services.AddInstance<IName>(new ProgramName());
+                })
+                .Configure(options =>
+                {
+                    //全局注册拦截器
+                    options.Interceptors.AddTyped<CapInterceptor>();
                 })
                 .Configure(p => { }).Build();
             var proxyHello = proxyGenerator.CreateInterfaceProxy<IHello, Hello>();
@@ -68,6 +74,15 @@ namespace AopConsoleApp
             }
             await next(context);
 
+        }
+    }
+
+    class CapInterceptor : AbstractInterceptor
+    {
+        public override async Task Invoke(AspectContext context, AspectDelegate next)
+        {
+            Console.WriteLine("global");
+            await next(context);
         }
     }
 
